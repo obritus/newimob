@@ -1,10 +1,12 @@
 'use client'
 
-import { Field, useFormik } from 'formik'
-import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useFormik } from 'formik'
+import logotipo from '@/images/logotipo.svg'
 
 const Form = () => {
-	const formik = useFormik({
+	const {isSubmitting, handleSubmit, handleChange} = useFormik({
 		initialValues: {
 			login: '',
 			password: '',
@@ -14,26 +16,43 @@ const Form = () => {
 			formikHelpers.setSubmitting(true)
 		},
 	})
+
 	return (
 		<div>
-			{formik.isSubmitting && (
+			<Link
+					href={'/'}
+					title='Home'
+					className='inline-block flex justify-center items-center'>
+					<Image
+						src={logotipo}
+						alt='Logotipo ImobJS'
+						width={128/2}
+						height={62/2}
+					/>
+				</Link>
+			{isSubmitting && (
 				<p className='text-center mb-4'>Enviando pro servidor...</p>
 			)}
 			<form
-				onSubmit={formik.handleSubmit}
+				onSubmit={handleSubmit}
 				className='flex gap-4 flex-col justify-center items-center'>
 				<input
+					autoFocus
+					required
 					title='login'
 					name='login'
-					className='px-2 py-1 text-slate-900 font-bold text-xl'
-					onChange={formik.handleChange}
+					className='px-2 py-1 text-white bg-slate-700 rounded-sm font-bold text-xl'
+					onChange={handleChange}
+					placeholder='Usuário'
 				/>
 				<input
+					required
 					title='password'
 					name='password'
 					type='password'
-					className='px-2 py-1 text-slate-900 font-bold text-xl'
-					onChange={formik.handleChange}
+					className='px-2 py-1 text-white bg-slate-700 rounded-sm font-bold text-xl'
+					onChange={handleChange}
+					placeholder='Senha'
 				/>
 				<button
 					type='submit'

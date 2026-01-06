@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function ImovelForm() {
     const [form, setForm] = useState({
@@ -22,10 +22,10 @@ export default function ImovelForm() {
             lat: 0,
             lng: 0,
         },
-        tags: [],
-    });
+        tags: [''],
+    })
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value, type, checked } = e.target;
         setForm((prev) => ({
             ...prev,
@@ -270,7 +270,7 @@ export default function ImovelForm() {
             <input
                 type="text"
                 placeholder="Tags separadas por vírgula"
-                onChange={(e) =>
+                onChange={(e:ChangeEvent<HTMLInputElement>) =>
                     setForm({
                         ...form,
                         tags: e.target.value.split(",").map(tag => tag.trim()),

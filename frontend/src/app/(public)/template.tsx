@@ -1,8 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
-import logotipo from '@/images/logotipo.svg'
-import imobjs from '@/images/imobjs_logo.svg'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 
