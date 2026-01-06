@@ -4,10 +4,28 @@ const nextConfig: NextConfig = {
 	/* config options here */
 	reactCompiler: true,
 	images: {
-		domains: [
-			'cdn.photoswipe.com',
-			'storage.googleapis.com',
-			'images.unsplash.com',
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'storage.googleapis.com',
+				port: '',
+				pathname: '*/**',
+				search: '',
+			},
+			{
+				protocol: 'https',
+				hostname: 'cdn.photoswipe.com',
+				port: '',
+				pathname: '*/**',
+				search: '',
+			},
+			{
+				protocol: 'https',
+				hostname: 'images.unsplash.com',
+				port: '',
+				pathname: '*/**',
+				search: '',
+			},
 		],
 	},
 }

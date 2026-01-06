@@ -9,7 +9,7 @@ const publicPaths = [
 
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/login'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
 	const { pathname } = request.nextUrl
 	const token = request.cookies.get('token')
 
